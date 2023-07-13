@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: design
+  profiles:
+    active: dev
+server:
+  port: 8190
+logging:
+  level:
+    com.xubo.druid.mapper: DEBUG
