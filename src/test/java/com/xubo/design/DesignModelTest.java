@@ -14,6 +14,10 @@ public class DesignModelTest {
     @Test
     public void testChainDesignModel() {
         LoginService loginService = new LoginService();
-        loginService.login("18627837596", "666");
+        // loginService.login("18627837596", "666");
+
+        System.out.println("--------链式编程-------");
+        // 链式编程
+        loginService.buildLogin("18627837596", "666");
     }
 }

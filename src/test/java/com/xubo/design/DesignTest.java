@@ -21,8 +21,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = DesignTest.class)
 public class DesignTest {
 
-    @Autowired
-    LoginService loginService;
 
     /**
      * 动态传入serverName
@@ -38,6 +36,11 @@ public class DesignTest {
 
     @Test
     public void chainDesignModel() {
+        LoginService loginService = new LoginService();
         loginService.login("18627837596", "666");
+
+        System.out.println("--------链式编程-------");
+        // 链式编程
+        loginService.buildLogin("18627837596", "666");
     }
 }

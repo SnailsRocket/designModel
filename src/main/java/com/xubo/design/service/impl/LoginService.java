@@ -1,7 +1,7 @@
 package com.xubo.design.service.impl;
 
 import com.xubo.design.entity.domain.UserInfo;
-import org.springframework.stereotype.Service;
+import com.xubo.design.service.abs.Handler;
 
 /**
  * @Author xubo
@@ -21,5 +21,17 @@ public class LoginService {
         codeCheckHandler.next(checkExistsHandler);
         checkExistsHandler.next(authHandler);
         codeCheckHandler.doHandler(userInfo);
+    }
+
+    public void buildLogin(String phoneNum, String code) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setPhoneNum(phoneNum);
+        userInfo.setCode(code);
+        // 链式编程
+        Handler.Builder<Object> builder = new Handler.Builder<>();
+        builder.addHandler(new CodeCheckHandler())
+                .addHandler(new CheckExistsHandler())
+                .addHandler(new AuthHandler());
+        builder.build().doHandler(userInfo);
     }
 }
